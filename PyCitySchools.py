@@ -125,6 +125,13 @@ district_summary
 
 # ## School Summary
 
+# In[81]:
+
+
+budget_per_student = total_budget / student_count
+budget_per_student
+
+
 # In[17]:
 
 
@@ -235,7 +242,7 @@ per_school_summary
 
 # ## Highest-Performing Schools (by % Overall Passing)
 
-# In[48]:
+# In[83]:
 
 
 # Sort the schools by `% Overall Passing` in descending order and display the top 5 rows.
@@ -243,12 +250,12 @@ top_schools = per_school_summary.sort_values(
     by = "Overall Passing Rate (%)",
     ascending = False)
 
-top_schools.head(5)
+top_schools
 
 
 # ## Bottom Performing Schools (By % Overall Passing)
 
-# In[49]:
+# In[82]:
 
 
 # Sort the schools by `% Overall Passing` in ascending order and display the top 5 rows.
@@ -256,7 +263,7 @@ bottom_schools = per_school_summary.sort_values(
     by = "Overall Passing Rate (%)",
     ascending = True)
 
-bottom_schools.head(5)
+bottom_schools
 
 
 # ## Math Scores by Grade
@@ -454,15 +461,15 @@ average_percent_passing_reading_by_type = per_school_summary.groupby(["School Ty
 average_percent_overall_passing_by_type = per_school_summary.groupby(["School Type"])["Overall Passing Rate (%)"].mean()
 
 
-# In[77]:
+# In[78]:
 
 
 # Assemble the new data by type into a DataFrame called `type_summary`
 type_summary = pd.DataFrame({
     "Average Math Score": average_math_score_by_type,
     "Average Reading Score": average_reading_score_by_type,
-    "Average Passing Math Score": average_percent_passing_math_by_type,
-    "Average Passing Reading Score": average_percent_passing_reading_by_type,
+    "Average Passing Math Rate": average_percent_passing_math_by_type,
+    "Average Passing Reading Rate": average_percent_passing_reading_by_type,
     "Average Overall Passing Rate": average_percent_overall_passing_by_type
 })
 
